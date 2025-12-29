@@ -1,0 +1,7 @@
+{
+  "name": "LuxeAtelier India - Premium E-commerce",
+  "description": "India's premier high-end fashion destination with AI styling and location-aware services.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
