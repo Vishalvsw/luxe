@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import StorefrontLayout from './components/StorefrontLayout';
 import Dashboard from './pages/Dashboard';
@@ -80,9 +80,9 @@ const App: React.FC = () => {
     <AuthProvider>
       <WishlistProvider>
         <CartProvider>
-          <BrowserRouter>
+          <HashRouter>
             <AppContent />
-          </BrowserRouter>
+          </HashRouter>
         </CartProvider>
       </WishlistProvider>
     </AuthProvider>
