@@ -5,7 +5,10 @@ export interface Product {
   category: string;
   price: number;
   stock: number;
+<<<<<<< HEAD
   sizeStock?: Record<string, number>;
+=======
+>>>>>>> master
   image: string;
   images?: string[];
   description: string;
@@ -32,4 +35,8 @@ export interface SaleData {
   name: string;
   revenue: number;
   orders: number;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

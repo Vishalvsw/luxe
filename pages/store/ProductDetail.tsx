@@ -1,7 +1,11 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { Sparkles, Loader2, ChevronLeft, ChevronRight, Minus, Plus, ShoppingBag, Heart, Share2, AlertCircle } from 'lucide-react';
+=======
+import { Sparkles, Loader2, ChevronLeft, ChevronRight, Minus, Plus, ShoppingBag, Heart, Share2 } from 'lucide-react';
+>>>>>>> master
 import { INITIAL_PRODUCTS } from '../../constants';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -55,9 +59,12 @@ const ProductDetail = () => {
 
   if (!product) return <div className="max-w-7xl mx-auto px-6 py-20 text-center font-serif text-2xl">Product not found</div>;
 
+<<<<<<< HEAD
   const currentSizeStock = product.sizeStock ? product.sizeStock[selectedSize] ?? 0 : product.stock;
   const isOutOfStock = currentSizeStock === 0;
 
+=======
+>>>>>>> master
   const handleGetStyling = async () => {
     setLoadingTips(true);
     const advice = await getStylingAdvice(product.name);
@@ -168,6 +175,7 @@ const ProductDetail = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <div className="flex justify-between items-end">
+<<<<<<< HEAD
                 <div className="flex items-center gap-3">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-slate-900">Select Size</label>
                   {isOutOfStock ? (
@@ -210,16 +218,38 @@ const ProductDetail = () => {
                     </button>
                   );
                 })}
+=======
+                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-900">Select Size</label>
+                <button className="text-[9px] font-bold uppercase tracking-widest text-indigo-600 underline underline-offset-4">Check My Size</button>
+              </div>
+              <div className="flex flex-wrap gap-2 md:gap-3">
+                {['S', 'M', 'L', 'XL'].map(size => (
+                  <button 
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`flex-1 min-w-[60px] h-12 md:h-14 rounded-sm border text-[11px] font-black transition-all ${
+                      selectedSize === size ? 'bg-slate-900 border-slate-900 text-white shadow-lg' : 'border-slate-100 text-slate-400 hover:border-slate-900 hover:text-slate-900'
+                    }`}
+                  >
+                    {size}
+                  </button>
+                ))}
+>>>>>>> master
               </div>
             </div>
 
             <div className="hidden md:flex flex-row gap-4 pt-4">
+<<<<<<< HEAD
               <div className={`flex items-center border border-slate-100 bg-slate-50 rounded-sm px-4 h-16 ${isOutOfStock ? 'opacity-50 grayscale pointer-events-none' : ''}`}>
+=======
+              <div className="flex items-center border border-slate-100 bg-slate-50 rounded-sm px-4 h-16">
+>>>>>>> master
                 <button onClick={() => setQty(Math.max(1, qty-1))} className="p-1 hover:text-indigo-600"><Minus size={16} /></button>
                 <span className="w-10 text-center font-black text-sm">{qty}</span>
                 <button onClick={() => setQty(qty+1)} className="p-1 hover:text-indigo-600"><Plus size={16} /></button>
               </div>
               <button 
+<<<<<<< HEAD
                 onClick={() => !isOutOfStock && addToCart(product, selectedSize)}
                 disabled={isOutOfStock}
                 className={`flex-1 h-16 font-black uppercase tracking-widest text-[11px] flex items-center justify-center gap-3 shadow-xl transition-all ${
@@ -229,6 +259,13 @@ const ProductDetail = () => {
                 }`}
               >
                 {isOutOfStock ? <><AlertCircle size={18} /> Out of Stock</> : <><ShoppingBag size={18} /> Add To Shopping Bag</>}
+=======
+                onClick={() => addToCart(product, selectedSize)}
+                disabled={product.stock === 0}
+                className="flex-1 h-16 bg-slate-900 text-white font-black uppercase tracking-widest text-[11px] flex items-center justify-center gap-3 shadow-xl hover:bg-slate-800 transition-all active:scale-95"
+              >
+                <ShoppingBag size={18} /> Add To Shopping Bag
+>>>>>>> master
               </button>
             </div>
           </div>
@@ -259,6 +296,7 @@ const ProductDetail = () => {
            <Heart size={24} fill={isInWishlist(product.id) ? "currentColor" : "none"} />
          </button>
          <button 
+<<<<<<< HEAD
            onClick={() => !isOutOfStock && addToCart(product, selectedSize)}
            disabled={isOutOfStock}
            className={`flex-1 font-black uppercase tracking-[0.2em] text-[10px] rounded-sm flex items-center justify-center gap-3 shadow-lg transition-all ${
@@ -268,10 +306,21 @@ const ProductDetail = () => {
            }`}
          >
            {isOutOfStock ? 'Out of Stock' : <><ShoppingBag size={20} /> Add to Bag</>}
+=======
+           onClick={() => addToCart(product, selectedSize)}
+           disabled={product.stock === 0}
+           className="flex-1 bg-slate-900 text-white font-black uppercase tracking-[0.2em] text-[10px] rounded-sm flex items-center justify-center gap-3 shadow-lg active:scale-95"
+         >
+           <ShoppingBag size={20} /> Add to Bag
+>>>>>>> master
          </button>
       </div>
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default ProductDetail;
+=======
+export default ProductDetail;
+>>>>>>> master

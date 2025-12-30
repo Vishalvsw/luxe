@@ -8,7 +8,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Evening Wear',
     price: 34999,
     stock: 12,
+<<<<<<< HEAD
     sizeStock: { 'S': 2, 'M': 5, 'L': 0, 'XL': 5 },
+=======
+>>>>>>> master
     image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1000&auto=format&fit=crop',
     images: [
       'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1000&auto=format&fit=crop',
@@ -24,7 +27,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Knitwear',
     price: 18500,
     stock: 45,
+<<<<<<< HEAD
     sizeStock: { 'S': 10, 'M': 15, 'L': 20, 'XL': 0 },
+=======
+>>>>>>> master
     image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1000&auto=format&fit=crop',
     images: [
       'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1000&auto=format&fit=crop',
@@ -40,7 +46,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Footwear',
     price: 12999,
     stock: 5,
+<<<<<<< HEAD
     sizeStock: { 'S': 1, 'M': 0, 'L': 2, 'XL': 2 },
+=======
+>>>>>>> master
     image: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=1000&auto=format&fit=crop',
     images: [
       'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=1000&auto=format&fit=crop',
@@ -56,7 +65,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Outerwear',
     price: 22499,
     stock: 8,
+<<<<<<< HEAD
     sizeStock: { 'S': 2, 'M': 2, 'L': 2, 'XL': 2 },
+=======
+>>>>>>> master
     image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop',
     images: [
       'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop',
@@ -71,7 +83,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Essentials',
     price: 4999,
     stock: 20,
+<<<<<<< HEAD
     sizeStock: { 'S': 5, 'M': 5, 'L': 5, 'XL': 5 },
+=======
+>>>>>>> master
     image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1000&auto=format&fit=crop',
     images: [
       'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1000&auto=format&fit=crop',
@@ -86,7 +101,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: 'Evening Wear',
     price: 7999,
     stock: 15,
+<<<<<<< HEAD
     sizeStock: { 'S': 5, 'M': 0, 'L': 5, 'XL': 5 },
+=======
+>>>>>>> master
     image: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=1000&auto=format&fit=crop',
     images: [
       'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=1000&auto=format&fit=crop',
@@ -112,4 +130,8 @@ export const SALES_CHART_DATA: SaleData[] = [
   { name: 'Fri', revenue: 75000, orders: 22 },
   { name: 'Sat', revenue: 92000, orders: 28 },
   { name: 'Sun', revenue: 84000, orders: 25 },
+<<<<<<< HEAD
 ];
+=======
+];
+>>>>>>> master
