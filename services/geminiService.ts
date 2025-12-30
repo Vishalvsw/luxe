@@ -1,6 +1,9 @@
 
 import { GoogleGenAI } from "@google/genai";
-
+const AI_ENABLED = false;
+if (!AI_ENABLED) {
+  throw new Error("Gemini service is disabled.");
+}
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateProductDescription = async (productName: string, category: string, keywords: string[]): Promise<string> => {
