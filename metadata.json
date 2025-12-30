@@ -1,13 +1,7 @@
 {
-<<<<<<< HEAD
   "name": "LuxeAtelier India - Premium E-commerce",
   "description": "India's premier high-end fashion destination with AI styling and location-aware services.",
   "requestFramePermissions": [
     "geolocation"
   ]
-=======
-  "name": "LuxeAdmin - Fashion E-commerce Suite",
-  "description": "A high-end, end-to-end admin dashboard for fashion brands featuring AI-powered product descriptions, detailed sales analytics, and inventory management.",
-  "requestFramePermissions": []
->>>>>>> master
 }
