@@ -1,3 +1,4 @@
+
 import { Product, Order, SaleData } from './types';
 
 export const INITIAL_PRODUCTS: Product[] = [
@@ -35,18 +36,17 @@ export const INITIAL_PRODUCTS: Product[] = [
   },
   {
     id: 'PRD-003',
-    name: 'Urban Leather Boots',
-    category: 'Footwear',
-    price: 12999,
-    stock: 5,
-    sizeStock: { 'S': 1, 'M': 0, 'L': 2, 'XL': 2 },
-    image: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=1000&auto=format&fit=crop',
+    name: 'Classic Khaki Trench',
+    category: 'Outerwear',
+    price: 28999,
+    stock: 15,
+    sizeStock: { 'S': 3, 'M': 5, 'L': 5, 'XL': 2 },
+    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=1000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1542288926-6370125bb062?q=80&w=1000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1520639889313-7272a74b1c73?q=80&w=1000&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=1000&auto=format&fit=crop'
     ],
-    description: 'Classic handcrafted leather boots with modern elastic side panels.',
+    description: 'A timeless double-breasted trench coat in premium cotton gabardine, featuring a belted waist and storm flaps.',
     status: 'Published'
   },
   {
@@ -56,10 +56,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     price: 22499,
     stock: 8,
     sizeStock: { 'S': 2, 'M': 2, 'L': 2, 'XL': 2 },
-    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000&auto=format&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop'
     ],
     description: 'Sharp wool blazer with gold-tone buttons and peak lapels.',
     status: 'Published'
