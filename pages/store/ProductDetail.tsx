@@ -23,6 +23,13 @@ const ProductDetail = () => {
     transform: 'scale(1)'
   });
 
+
+  // TEMPORARY AI DISABLE FIX
+const generateAIContent = async () => {
+  return "This is a premium product crafted for modern fashion needs.";
+};
+
+
   const product = INITIAL_PRODUCTS.find(p => p.id === id);
   const productImages = product?.images || (product?.image ? [product.image] : []);
 

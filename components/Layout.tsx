@@ -8,7 +8,6 @@ import {
   BarChart3, 
   Package, 
   Settings,
-  Sparkles,
   ArrowLeft
 } from 'lucide-react';
 
@@ -23,13 +22,12 @@ const Sidebar = () => {
     { name: 'Orders', icon: <Package size={20} />, path: '/admin/orders' },
     { name: 'Customers', icon: <Users size={20} />, path: '/admin/customers' },
     { name: 'Analytics', icon: <BarChart3 size={20} />, path: '/admin/analytics' },
-    { name: 'AI Assistant', icon: <Sparkles size={20} />, path: '/admin/ai-tools' },
   ];
 
   return (
     <aside className="w-64 bg-slate-900 h-screen fixed left-0 top-0 text-white flex flex-col border-r border-slate-800">
       <div className="p-8 border-b border-slate-800">
-        <h1 className="text-2xl font-serif font-bold tracking-tight">LUXE<span className="text-indigo-400">ADMIN</span></h1>
+        <h1 className="text-2xl font-serif font-bold tracking-tight uppercase">KOOL<span className="text-indigo-400">RAVES</span></h1>
         <p className="text-xs text-slate-400 mt-1 uppercase tracking-widest font-medium">Fashion Suite</p>
       </div>
       

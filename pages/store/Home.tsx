@@ -12,7 +12,6 @@ const Home = () => {
     { name: 'Evening', img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300' },
     { name: 'Knitwear', img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=300' },
     { name: 'Outerwear', img: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=300' },
-    { name: 'Footwear', img: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=300' },
     { name: 'Linen', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300' }
   ];
 
@@ -49,8 +48,8 @@ const Home = () => {
                 <span className="w-6 h-[1px] bg-white"></span>
                 Winter Edit 2024
               </div>
-              <h1 className="text-5xl md:text-8xl font-serif leading-none italic">Luxe <br className="md:hidden"/> Indian Soul</h1>
-              <p className="text-xs md:text-lg text-white/80 max-w-[280px] md:max-w-sm font-light leading-relaxed">Milano craftsmanship, perfectly tailored for the modern Indian lifestyle.</p>
+              <h1 className="text-5xl md:text-8xl font-serif leading-none italic uppercase">Kool <br className="md:hidden"/> Indian Soul</h1>
+              <p className="text-xs md:text-lg text-white/80 max-w-[280px] md:max-w-sm font-light leading-relaxed">Handcrafted excellence, perfectly tailored for the modern Indian lifestyle.</p>
               <div className="pt-4 md:pt-8">
                 <Link to="/shop" className="group flex items-center justify-center md:justify-start gap-4 bg-white text-slate-900 px-8 py-4 md:py-5 rounded-sm font-bold uppercase tracking-widest text-[10px] md:text-[11px] hover:bg-slate-100 transition-all w-full md:w-fit shadow-2xl">
                   Shop Festive Collection <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
@@ -131,9 +130,9 @@ const Home = () => {
           <div className="text-center space-y-2">
             <div className="flex items-center justify-center gap-2 text-indigo-600 mb-2">
               <InstaIcon size={20} />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em]">Follow Us @LuxeAtelierIn</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em]">Follow Us @KoolravesIn</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-serif italic">The Gram Edit</h2>
+            <h2 className="text-3xl md:text-5xl font-serif italic uppercase">The Kool Edit</h2>
             <p className="text-slate-400 text-xs uppercase tracking-widest">Shop Our Feed For Daily Inspo</p>
           </div>
 

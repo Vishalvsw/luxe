@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <div className="max-w-md mx-auto px-6 py-20 animate-in fade-in duration-500">
       <div className="text-center space-y-4 mb-12">
-        <h1 className="text-3xl font-serif italic">Welcome to Luxe</h1>
+        <h1 className="text-3xl font-serif italic uppercase">Welcome to Koolraves</h1>
         <p className="text-slate-500 text-sm">Experience personalized styling and early access to our Indian collections.</p>
       </div>
 
