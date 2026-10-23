@@ -12,5 +12,5 @@ This contains everything you need to run your app locally.
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
-*(wwww.vswdatasolutions.in)*
+*(www.vswdatasolutions.in)*
 Contact details: *+91 7090160422*
