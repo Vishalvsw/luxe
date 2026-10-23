@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.koolraves.app",
+      "sha256_cert_fingerprints": [
+        "14:6D:E9:7F:0E:52:D7:11:86:10:5E:72:42:0E:87:BB:22:96:3C:96:E4:FA:97:54:38:91:0A:69:B3:1B:32:02"
+      ]
+    }
+  }
+]

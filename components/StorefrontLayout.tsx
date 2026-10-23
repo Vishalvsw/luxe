@@ -1,10 +1,13 @@
 
 import React, { useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Search, Menu, X, Instagram, Heart, User, Home, Grid, MapPin, Check, MapPinned } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Instagram, Heart, User, Home, Grid, MapPin, Check, MapPinned, Smartphone, Download, Sparkles } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useAuth } from '../context/AuthContext';
+import { ApkModal } from './ApkModal';
+import { PWAInstallButton } from './PWAInstallButton';
+import { OfflineIndicator } from './OfflineIndicator';
 
 const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { cartCount, cart, removeFromCart, cartTotal } = useCart();
@@ -13,6 +16,7 @@ const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children })
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+  const [isApkModalOpen, setIsApkModalOpen] = useState(false);
   const [tempCity, setTempCity] = useState(user?.city || '');
   const [tempPincode, setTempPincode] = useState(user?.pincode || '');
   
@@ -28,9 +32,17 @@ const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children })
 
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans pb-16 md:pb-0">
-      {/* Top Banner */}
-      <div className="hidden md:block bg-slate-900 text-white text-[10px] py-2 text-center font-bold tracking-[0.2em] uppercase">
-        Free Express Delivery Across India on Orders Above ₹5000
+      {/* Top Banner with APK & Install Trigger */}
+      <div className="bg-slate-950 text-white text-[10px] py-2 px-4 text-center font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-2 flex-wrap">
+        <span className="hidden sm:inline">Free Express Delivery Across India on Orders Above ₹5000</span>
+        <span className="hidden sm:inline opacity-40">•</span>
+        <button 
+          onClick={() => setIsApkModalOpen(true)}
+          className="bg-indigo-600 hover:bg-indigo-500 text-white px-2.5 py-0.5 rounded-full inline-flex items-center gap-1.5 font-black tracking-wider transition shadow-sm"
+        >
+          <Smartphone size={11} className="text-emerald-400" />
+          <span>Convert to Android APK / Install App</span>
+        </button>
       </div>
 
       {/* Primary Header - Sticky */}
@@ -52,10 +64,21 @@ const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children })
           </div>
 
           <div className="flex items-center gap-2 md:gap-4 flex-1 justify-end">
+            {/* Direct APK / App Modal Launcher */}
+            <button
+              onClick={() => setIsApkModalOpen(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 hover:bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider transition shadow-sm"
+              title="Android APK and PWA Install Center"
+            >
+              <Smartphone size={13} className="text-emerald-400" />
+              <span className="hidden sm:inline">Get APK / App</span>
+              <span className="sm:hidden">APK</span>
+            </button>
+
             {/* Location Selector */}
             <button 
               onClick={() => setIsLocationModalOpen(true)}
-              className="hidden md:flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition-colors mr-4 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100"
+              className="hidden md:flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition-colors mr-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100"
             >
               <MapPin size={14} className="text-indigo-600" />
               <span className="max-w-[120px] truncate">Deliver to: {isLoggedIn ? user?.city : (user?.city || 'Select Location')}</span>
@@ -96,14 +119,22 @@ const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children })
           </div>
         </div>
         
-        {/* Mobile Delivery Bar */}
-        <button 
-          onClick={() => setIsLocationModalOpen(true)}
-          className="md:hidden w-full bg-indigo-50 px-4 py-1.5 flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-indigo-700 border-t border-indigo-100"
-        >
-          <MapPin size={12} />
-          <span>Delivering to {user?.city ? `${user.city}, ${user.pincode}` : 'India'} • <span className="underline">Change</span></span>
-        </button>
+        {/* Mobile Delivery & App Bar */}
+        <div className="md:hidden w-full bg-indigo-50 px-3 py-1.5 flex items-center justify-between text-[9px] font-bold uppercase tracking-wider text-indigo-900 border-t border-indigo-100">
+          <button 
+            onClick={() => setIsLocationModalOpen(true)}
+            className="flex items-center gap-1.5 truncate max-w-[65%]"
+          >
+            <MapPin size={11} className="text-indigo-600 shrink-0" />
+            <span className="truncate">To {user?.city ? `${user.city}` : 'India'} • <span className="underline">Change</span></span>
+          </button>
+          <button
+            onClick={() => setIsApkModalOpen(true)}
+            className="text-indigo-700 font-black flex items-center gap-1 bg-indigo-100 px-2 py-0.5 rounded"
+          >
+            <Smartphone size={10} /> Install APK
+          </button>
+        </div>
       </nav>
 
       {/* Location Modal */}
@@ -154,22 +185,31 @@ const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children })
       )}
 
       {/* Mobile Bottom Navigation (Sticky) */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 h-16 z-[60] flex items-center justify-around md:hidden px-4 pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 h-16 z-[60] flex items-center justify-around md:hidden px-2 pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
         <NavLink to="/" className={({isActive}) => `flex flex-col items-center gap-1 ${isActive ? 'text-indigo-600' : 'text-slate-400'}`}>
-          <Home size={20} />
+          <Home size={19} />
           <span className="text-[9px] font-bold uppercase tracking-tighter">Home</span>
         </NavLink>
         <NavLink to="/shop" className={({isActive}) => `flex flex-col items-center gap-1 ${isActive ? 'text-indigo-600' : 'text-slate-400'}`}>
-          <Grid size={20} />
+          <Grid size={19} />
           <span className="text-[9px] font-bold uppercase tracking-tighter">Explore</span>
         </NavLink>
+        <button 
+          onClick={() => setIsApkModalOpen(true)} 
+          className="flex flex-col items-center gap-1 text-indigo-600"
+        >
+          <div className="w-7 h-7 -mt-2 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-600/30">
+            <Smartphone size={15} />
+          </div>
+          <span className="text-[8px] font-black uppercase tracking-tighter text-indigo-700">Get APK</span>
+        </button>
         <NavLink to="/wishlist" className={({isActive}) => `flex flex-col items-center gap-1 relative ${isActive ? 'text-indigo-600' : 'text-slate-400'}`}>
-          <Heart size={20} />
+          <Heart size={19} />
           {wishlistCount > 0 && <span className="absolute top-0 right-0 w-2 h-2 bg-rose-500 rounded-full border-2 border-white" />}
           <span className="text-[9px] font-bold uppercase tracking-tighter">Wishlist</span>
         </NavLink>
         <button onClick={() => navigate('/login')} className="flex flex-col items-center gap-1 text-slate-400">
-          <User size={20} />
+          <User size={19} />
           <span className="text-[9px] font-bold uppercase tracking-tighter">{isLoggedIn ? 'Account' : 'Login'}</span>
         </button>
       </div>
@@ -191,6 +231,23 @@ const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children })
                 Sponsored by KRK VINTRADE PRIVATE LIMITED (KOOLRAVES)
               </p>
             </div>
+            
+            {/* Direct APK Download / Mobile App Action Box in Footer */}
+            <div className="inline-flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl p-3 text-left">
+              <div className="w-10 h-10 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0">
+                <Smartphone size={20} />
+              </div>
+              <div>
+                <p className="font-bold text-xs text-slate-900 uppercase tracking-tight">Android App Available</p>
+                <button 
+                  onClick={() => setIsApkModalOpen(true)}
+                  className="text-[10px] font-black uppercase tracking-wider text-indigo-600 hover:text-indigo-800 underline underline-offset-2"
+                >
+                  Download APK or Install WebAPK →
+                </button>
+              </div>
+            </div>
+
             <div className="flex justify-center md:justify-start gap-6">
               <Instagram size={22} className="text-slate-400 hover:text-indigo-600 cursor-pointer transition-colors" />
               <div className="w-6 h-6 bg-slate-100 rounded-full cursor-pointer hover:bg-indigo-50 transition-colors" />
@@ -214,11 +271,15 @@ const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children })
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-[10px] uppercase tracking-widest mb-4 md:mb-6 text-slate-900">The Brand</h4>
+              <h4 className="font-bold text-[10px] uppercase tracking-widest mb-4 md:mb-6 text-slate-900">The Brand & App</h4>
               <ul className="space-y-2 text-xs text-slate-500">
                 <li><Link to="/shop" className="hover:text-indigo-600">Our Story</Link></li>
-                <li><Link to="/shop" className="hover:text-indigo-600">Careers</Link></li>
                 <li><Link to="/shop" className="hover:text-indigo-600">Sustainability</Link></li>
+                <li>
+                  <button onClick={() => setIsApkModalOpen(true)} className="text-indigo-600 font-bold hover:underline flex items-center gap-1">
+                    <Download size={12} /> Android APK Hub
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
@@ -305,11 +366,29 @@ const StorefrontLayout: React.FC<{ children: React.ReactNode }> = ({ children })
                 Shop Womens <Grid size={16} />
               </NavLink>
               <NavLink to="/shop" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-widest text-rose-600">The Archive Sale</NavLink>
+              
+              {/* Mobile APK Action Button */}
+              <button 
+                onClick={() => { setIsMenuOpen(false); setIsApkModalOpen(true); }}
+                className="w-full flex items-center justify-between p-3.5 bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-md"
+              >
+                <span className="flex items-center gap-2">
+                  <Smartphone size={16} className="text-emerald-400" /> Convert / Get APK
+                </span>
+                <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded text-white font-mono">.apk</span>
+              </button>
+
               <NavLink to="/admin" onClick={() => setIsMenuOpen(false)} className="text-xs font-bold uppercase tracking-widest text-slate-400 mt-auto">Brand Dashboard</NavLink>
             </div>
           </div>
         </div>
       )}
+
+      {/* Android APK & PWA Center Modal */}
+      <ApkModal isOpen={isApkModalOpen} onClose={() => setIsApkModalOpen(false)} />
+
+      {/* Offline Status Toast */}
+      <OfflineIndicator />
     </div>
   );
 };

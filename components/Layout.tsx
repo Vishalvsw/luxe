@@ -8,14 +8,16 @@ import {
   BarChart3, 
   Package, 
   Settings,
-  ArrowLeft
+  ArrowLeft,
+  Smartphone
 } from 'lucide-react';
+import { ApkModal } from './ApkModal';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const Sidebar = () => {
+const Sidebar = ({ onOpenApkModal }: { onOpenApkModal: () => void }) => {
   const navItems = [
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/admin' },
     { name: 'Products', icon: <ShoppingBag size={20} />, path: '/admin/products' },
@@ -52,20 +54,23 @@ const Sidebar = () => {
       </nav>
 
       <div className="p-4 border-t border-slate-800 space-y-2">
+        <button 
+          onClick={onOpenApkModal}
+          className="flex items-center gap-3 px-4 py-3 w-full text-emerald-400 hover:bg-slate-800 hover:text-emerald-300 rounded-lg transition-colors font-medium text-sm"
+        >
+          <Smartphone size={20} />
+          <span>Android APK Hub</span>
+        </button>
         <Link to="/" className="flex items-center gap-3 px-4 py-3 w-full text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
           <ArrowLeft size={20} />
           <span className="font-medium">Exit Admin</span>
         </Link>
-        <button className="flex items-center gap-3 px-4 py-3 w-full text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
-          <Settings size={20} />
-          <span className="font-medium">Settings</span>
-        </button>
       </div>
     </aside>
   );
 };
 
-const Header = () => {
+const Header = ({ onOpenApkModal }: { onOpenApkModal: () => void }) => {
   return (
     <header className="h-16 bg-white border-b border-slate-200 fixed top-0 right-0 left-64 z-10 flex items-center justify-between px-8">
       <div className="flex items-center bg-slate-100 rounded-full px-4 py-1.5 w-96">
@@ -77,6 +82,14 @@ const Header = () => {
       </div>
       
       <div className="flex items-center gap-4">
+        <button
+          onClick={onOpenApkModal}
+          className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider transition shadow-sm"
+        >
+          <Smartphone size={14} className="text-emerald-400" />
+          <span>Package APK</span>
+        </button>
+
         <div className="text-right">
           <p className="text-sm font-semibold text-slate-900">Johnathan Doe</p>
           <p className="text-xs text-slate-500">Store Manager</p>
@@ -90,15 +103,18 @@ const Header = () => {
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const [isApkOpen, setIsApkOpen] = React.useState(false);
+
   return (
     <div className="min-h-screen bg-slate-50">
-      <Sidebar />
+      <Sidebar onOpenApkModal={() => setIsApkOpen(true)} />
       <div className="pl-64">
-        <Header />
+        <Header onOpenApkModal={() => setIsApkOpen(true)} />
         <main className="pt-24 pb-12 px-8 max-w-7xl mx-auto">
           {children}
         </main>
       </div>
+      <ApkModal isOpen={isApkOpen} onClose={() => setIsApkOpen(false)} />
     </div>
   );
 };
